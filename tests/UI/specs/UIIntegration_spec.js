@@ -684,10 +684,10 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
 
     // extra segment tests
     it('should load the row evolution page correctly when a segment is selected', function (done) {
-        var url = "?module=CoreHome&action=index&idSite=1&period=year&date=2012-01-13#?module=CustomVariables&action=menuGetCustomVariables&idSite=1&period=year&date=2012-01-13";
+        var url = "?module=CoreHome&action=index&idSite=1&period=year&date=2012-01-13#?category=General_Visitors&subcategory=CustomVariables_CustomVariables&idSite=1&period=year&date=2012-01-13";
         expect.page(url).contains('.ui-dialog > .ui-dialog-content > div.rowevolution:visible', 'segmented_rowevolution', function (page) {
             page.click('.segmentationTitle');
-            page.click('.segname:contains(From Europe)');
+            page.click('.segname:contains(From Europe)', 1000);
 
             page.mouseMove('table.dataTable tbody tr:first-child');
             page.mouseMove('a.actionRowEvolution:visible'); // necessary to get popover to display
@@ -698,24 +698,17 @@ describe("UIIntegrationTest", function () { // TODO: Rename to Piwik?
     });
 
     it('should load the segmented visitor log correctly when a segment is selected', function (done) {
-        this.retries(3);
-
-        expect.screenshot("segmented_visitorlog").to.be.skippedOnAbort();
-        
         var url = "?module=CoreHome&action=index&idSite=1&period=year&date=2012-01-13#?category=General_Visitors&subcategory=CustomVariables_CustomVariables&idSite=1&period=year&date=2012-01-13";
-        expect.page(url).contains('.ui-dialog > .ui-dialog-content > div.dataTableVizVisitorLog:visible', 'segmented_visitorlog', function (page) {
-            page.wait(1000);
+        expect.screenshot('segmented_visitorlog').to.be.capture(function (page) {
+            page.load(url);
             page.click('.segmentationTitle');
-            page.wait(500);
-            page.click('.segname:contains(From Europe)');
-            page.wait(500);
+            page.click('.segname:contains(From Europe)', 1000);
+
             page.mouseMove('table.dataTable tbody tr:first-child');
-            page.wait(500);
             page.mouseMove('a.actionSegmentVisitorLog:visible'); // necessary to get popover to display
-            page.wait(500);
             page.click('a.actionSegmentVisitorLog:visible');
             page.wait(1000);
-
+            page.contains('.ui-dialog > .ui-dialog-content > div.dataTableVizVisitorLog:visible');
         }, done);
     });
 
