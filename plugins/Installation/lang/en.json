@@ -126,6 +126,8 @@
         "SystemCheckPhpSetting": "To prevent some critical issue, you must set the following in your php.ini file: %s",
         "SystemCheckUpdateHttps": "Update over HTTPS",
         "SystemCheckUpdateHttpsNotSupported": "Piwik cannot use HTTPS to update, it will fall back to the insecure HTTP update. Check that CURL or allow_url_fopen is supported and that the openssl PHP extension is installed: http:\/\/piwik.org\/faq\/troubleshooting\/faq_177\/.",
+        "SystemCheckSomePiwikFoldersFoundInSubDirectories": "Some other Piwik installations were found in sub-folders which is a security issue. Please delete or move these directories:",
+        "SystemCheckFilesystemSecurityChecks": "Filesystem security checks",
         "NotSupported": "not supported",
         "Tables": "Creating the Tables",
         "TablesCreatedSuccess": "Tables created with success!",

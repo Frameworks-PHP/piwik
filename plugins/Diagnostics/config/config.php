@@ -9,6 +9,7 @@ return array(
         DI\get('Piwik\Plugins\Diagnostics\Diagnostic\PhpFunctionsCheck'),
         DI\get('Piwik\Plugins\Diagnostics\Diagnostic\PhpSettingsCheck'),
         DI\get('Piwik\Plugins\Diagnostics\Diagnostic\WriteAccessCheck'),
+        DI\get('Piwik\Plugins\Diagnostics\Diagnostic\NoPiwikLeftUninstalledInSubDirectories'),
     ),
     // Diagnostics for recommended features
     'diagnostics.optional' => array(
